@@ -2,35 +2,39 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+
 export default function MyPhoto() {
   return (
-    <div className="w-full h-full relative">
+    <div className="relative flex justify-center items-center w-full h-full">
+      {/* Image container */}
       <motion.div
+        className="relative"
         initial={{ opacity: 0 }}
         animate={{
           opacity: 1,
-          transition: { delay: 2.4, duration: 0.4, ease: "easeInOut" },
+          transition: { delay: 1.5, duration: 0.6, ease: "easeInOut" },
         }}
       >
-        <div className="w-[298px] h-[298px] xl:w-[460px] xl:h[460px]  xl:mt-6 mix-blend-overlay  absolute">
+        <div className="relative w-52 h-52 sm:w-64 sm:h-64 xl:w-80 xl:h-80 mix-blend-overlay">
           <Image
-            src="/Ramzi.png"
+            src="/Ramzi.jpg"
             priority
             quality={100}
             fill
             alt="Picture of the author"
-            className="object-contain "
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover rounded-full"
+            sizes="(max-width: 768px) 80vw, (max-width: 1200px) 40vw, 25vw"
           />
         </div>
       </motion.div>
+
+      {/* Circular animation */}
       <motion.svg
-        className="w-[300px] xl:w-[506px] h-[300px] xl:h-[506px]"
-        fill="transparent"
+        className="absolute w-56 h-56 sm:w-72 sm:h-72 xl:w-96 xl:h-96"
+        fill="none"
         viewBox="0 0 506 506"
         xmlns="http://www.w3.org/2000/svg"
       >
-        {" "}
         <motion.circle
           cx="253"
           cy="253"
@@ -39,12 +43,12 @@ export default function MyPhoto() {
           strokeWidth="4"
           strokeLinejoin="round"
           strokeLinecap="round"
-          initial={{ strokeDasharray: "24 10 0 0 " }}
+          initial={{ strokeDasharray: "10 20" }}
           animate={{
-            strokeDasharray: ["15 120 25 25", "16 25 92 72", "4 250 22"],
-            rotate: [120, 360],
+            strokeDasharray: ["10 100", "40 150", "20 250"],
+            rotate: [0, 180, 360],
           }}
-          transition={{ duration: 20, repeat: Infinity, repeatType: "reverse" }}
+          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
         />
       </motion.svg>
     </div>
